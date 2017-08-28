@@ -6,3 +6,7 @@ BIN=mouse
 
 all:
 	${CC} ${CXXFLAGS} ${SRC} -o ${BIN}
+
+.PHONY: clean
+clean:
+	${RM} ${BIN}
