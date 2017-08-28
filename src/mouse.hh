@@ -45,13 +45,13 @@ private:
     std::pair<int, int> coords;
     std::shared_ptr<std::vector<std::vector<Tile>>> map;
     
-    bool move(Direction&);
+    bool move(const Direction&);
     bool is_success() const;
     bool solve_maze_rec(std::vector<Direction>&, std::vector<std::pair<int, int>>&);
     void clearn(std::vector<Direction>&, std::vector<std::pair<int, int>>&, int);
-    std::string dir2str(Direction&) const;
-    std::pair<int, int> get_next_coords(Direction&) const;
-    Direction invert_direction(Direction&) const;    
+    std::string dir2str(const Direction&) const;
+    std::pair<int, int> get_next_coords(const Direction&) const;
+    Direction invert_direction(const Direction&) const;    
 };
 
 }
