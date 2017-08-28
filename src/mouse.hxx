@@ -8,7 +8,9 @@ Mouse::solve_maze()
 {
     std::vector<Direction> path;
     std::vector<std::pair<int, int>> path_coords = {this->coords};
+ 
     this->solve_maze_rec(path, path_coords);
+ 
     for (auto dir : path)
         std::cout << this->dir2str(dir) << " ";
     std::cout << std::endl;
@@ -22,14 +24,14 @@ Mouse::solve_maze_rec(std::vector<Direction>& path,
         return true;
 
     for (auto dir : directions)
-    {
+    {        
         auto next_coords = this->get_next_coords(dir);
         if (std::find(path_coords.begin(), path_coords.end(), next_coords) != path_coords.end())
             continue;
-        
+            
         int curr = path.size();
         if (this->move(dir)) // If next direction is not a wall.
-        {            
+        {   
             path.push_back(dir);
             path_coords.push_back(this->coords);
             if (this->solve_maze_rec(path, path_coords))
@@ -43,7 +45,7 @@ Mouse::solve_maze_rec(std::vector<Direction>& path,
 }
 
 inline std::string
-Mouse::dir2str(Direction& dir) const
+Mouse::dir2str(const Direction& dir) const
 {
     switch (dir)
     {
@@ -75,20 +77,20 @@ Mouse::is_success() const
 }
 
 inline bool
-Mouse::move(Direction& dir)
+Mouse::move(const Direction& dir)
 {
-    auto next_coords = this->get_next_coords(dir);
-    if (map->at(next_coords.second).at(next_coords.first) == Tile::WALL)
+    auto next_coords = this->get_next_coords(dir);        
+    if (map->at(next_coords.second).at(next_coords.first) == Tile::WALL)        
         return false;
-    
+
     this->coords = next_coords;
     return true;
 }
 
 inline std::pair<int, int>
-Mouse::get_next_coords(Direction& dir) const
+Mouse::get_next_coords(const Direction& dir) const
 {
-    auto next_coords = this->coords;
+    std::pair<int, int> next_coords = this->coords;
     switch (dir)
     {
         case UP     : next_coords.second--; break;
@@ -101,7 +103,7 @@ Mouse::get_next_coords(Direction& dir) const
 }
 
 inline Direction
-Mouse::invert_direction(Direction& dir) const
+Mouse::invert_direction(const Direction& dir) const
 {
     switch (dir)
     {
@@ -129,8 +131,6 @@ Mouse::read_map(std::string& path)
 
         for (auto c : line)
         {
-            x++;
-
             if (c == 'o')
                 row.push_back(Tile::WALL);
             else if (c == 'm')
@@ -138,12 +138,12 @@ Mouse::read_map(std::string& path)
                 this->coords = std::make_pair(x, y);
                 row.push_back(Tile::ROAD);
             }
-            else if (c == ' ')
-                row.push_back(Tile::ROAD);
             else if (c == 'c')
                 row.push_back(Tile::CHEESE);
             else
-                return false;
+                row.push_back(Tile::ROAD);    
+                
+            x++;
         }
 
         this->map->push_back(row);
