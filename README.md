@@ -55,3 +55,19 @@ oco
 ooo
 DOWN DOWN DOWN
 ```
+
+```
+$ ./mouse tests/test2.txt
+oooooooooooooooooooo
+om      o         co
+o oooo  o ooooo oooo
+o o     o   ooo oooo
+o ooooooooo o   o
+o  oo     o ooooo
+oo oo o   o o
+o     ooooo o
+o ooooo     o
+o       ooooo
+oooooooooo
+DOWN DOWN DOWN DOWN RIGHT DOWN DOWN LEFT DOWN DOWN RIGHT RIGHT RIGHT RIGHT RIGHT RIGHT UP RIGHT RIGHT RIGHT RIGHT UP UP UP UP UP LEFT LEFT UP UP RIGHT RIGHT RIGHT RIGHT RIGHT RIGHT RIGHT RIGHT RIGHT
+```
