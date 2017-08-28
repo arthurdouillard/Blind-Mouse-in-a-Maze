@@ -31,6 +31,16 @@ However because to know the adjacent tiles, the mouse has to *actually move*.
 It would have needed an annoying move-tracker.
 
 Thus I've decided to simply use an **depth-first-search** with backtracking.
+The path found is not always the shortest one, it is simply the first one found.
+
+## Map
+
+Maps are stored in a text file with:
+
+* `o` being a wall.
+* A space being a *road*.
+* `m` being the mouse.
+* `c` being the cheese.
 
 ## Example
 
